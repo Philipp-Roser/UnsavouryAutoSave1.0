@@ -1,15 +1,12 @@
+/* Copyright Philipp Roser -- see LICENSE for license */
+
 #ifndef UNICODE
 #define UNICODE
 #endif
 
 #include <windows.h>
 #include <time.h>
-#include <cstdlib>
-#include <ShObjIdl.h>
-#include <cwchar>
 #include <string>
-#include <stdio.h>
-#include <cctype>
 #include "resource.h"
 
 
@@ -181,8 +178,8 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	}
 
 	case WM_DESTROY:
-		KillTimer(hwnd, ID_TIMER); // clean up timer
-		PostQuitMessage(0);  // exit message loop
+		KillTimer(hwnd, ID_TIMER);
+		PostQuitMessage(0);
 		return 0;
 		return 0;
 	}
@@ -256,6 +253,6 @@ std::wstring SystemTimeToString(SYSTEMTIME* st)
 {
 	wchar_t timeString[16];
 	swprintf(timeString, sizeof(timeString) / sizeof(wchar_t),
-		L"%02d:%02d:%02d\n", st->wHour, st->wMinute, st->wSecond);//st->wHour + ":" + st->wMinute + ":" + st->wSecond;
+		L"%02d:%02d:%02d\n", st->wHour, st->wMinute, st->wSecond);
 	return timeString;
 }
